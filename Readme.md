@@ -1,2 +1,10 @@
-# 简易编辑器，意在感受编译器整个流程。  from https://github.com/jamiebuilds/the-super-tiny-compiler
+简易编辑器，意在感受编译器整个流程。  from https://github.com/jamiebuilds/the-super-tiny-compiler
 
+前几天看到一篇关于babel的文章，是关于讲解babel工作原理的。勾起了我对于编译器的兴趣，便找了一个以前关注的项目，是一个很简单的编译器。涵盖了代码再转意的整个过程。我按照例子中的流程走了一遍。总结以下总共四个步骤：
+
+- tokener 将字符串转换成特定的标记，供给 paser 使用
+- paser 将 tokener 处理过的标记组 转换成 ast 也就是抽象语法树，相比之下，这一步处理会有些繁琐
+- transformer  将抽象语法树 => 想要修改的目标格式的抽象语法树，这一步涵盖了一个traverse深度遍历的操作
+- codeGenerator 将抽象语法书输出成code
+
+至此整个流程就完全了，值得一提的是，抽象语法树本身是一种树的数据解构，这样在处理的过程中，就会使用一些经典的遍历树的操作，比如深度遍历、递归等。
